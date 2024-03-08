@@ -58,6 +58,41 @@ class MasksToColoredMasks:
         return (image,)
     
 
+    
+mode_list = ['HEX', 'DEC']
+
+def hex_to_dec(inhex):
+    rval = inhex[1:3]
+    gval = inhex[3:5]
+    bval = inhex[5:]
+    rgbval = (int(rval, 16), int(gval, 16), int(bval, 16))
+    return rgbval
+
+class ColorPicker:
+    @classmethod
+    def INPUT_TYPES(s):
+        return {
+            "required": {
+                "color": ("COLOR", {"default": "white"},),
+                "mode": (mode_list,), 
+            }
+        }
+
+    CATEGORY = "mask"
+
+    RETURN_TYPES = ("STRING",)
+    RETURN_NAMES = ("value",)
+    FUNCTION = "picker"
+    CATEGORY = "color"
+    OUTPUT_NODE = True
+
+    def picker(self, color, mode,):
+        ret = color
+        if mode == 'DEC':
+            ret = hex_to_dec(color)
+        return (ret,)
+    
+
 
 NODE_CLASS_MAPPINGS = {
     "MasksToColoredMasks": MasksToColoredMasks
