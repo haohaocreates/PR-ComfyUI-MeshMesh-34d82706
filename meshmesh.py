@@ -24,7 +24,7 @@ class MasksToColoredMasks:
             "required": {
                 "mask": ("MASK",),
                 "colorlist": ("STR",),
-                "background": ("COLOR", {"default": "#000000"}),
+                "background": ("COLOR", {"default": "#00ff00"}),
             }
         }
 
