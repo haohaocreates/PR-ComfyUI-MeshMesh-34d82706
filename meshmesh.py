@@ -3,21 +3,9 @@ from PIL import Image
 import torch
 
 
-colors = [
-    (255, 0, 0),    # Red
-    (0, 255, 0),    # Green
-    (0, 0, 255),    # Blue
-    (255, 255, 0),  # Yellow
-    (255, 0, 255),  # Magenta
-    (0, 255, 255),  # Cyan
-    (128, 0, 128),  # Purple
-    (255, 165, 0),  # Orange
-    (0, 128, 0),    # Dark Green
-    (128, 128, 128)  # Gray
-]
+def replace_color(img, color_hex):
 
-
-def replace_color(img, color):
+    color = tuple(int(color_hex.lstrip('#')[i:i+2], 16) for i in (0, 2, 4))
     red, green, blue, alpha = img.T
 
     # Replace non-black with color and set black to alpha
@@ -35,6 +23,7 @@ class MasksToColoredMasks:
         return {
             "required": {
                 "mask": ("MASK",),
+                "colorlist": ("STR",),
                 "background": ("COLOR", {"default": "#000000"}),
             }
         }
@@ -44,7 +33,8 @@ class MasksToColoredMasks:
     RETURN_TYPES = ("IMAGE",)
     FUNCTION = "mask_to_image"
 
-    def mask_to_image(self, mask, background):
+    def mask_to_image(self, mask, colorlist, background):
+        colors = colorlist["string"].split(",")
         result = mask.reshape(
             # (Masks, Add Channels Dim, Height, Width)
             (-1, 1, mask.shape[-2], mask.shape[-1])
