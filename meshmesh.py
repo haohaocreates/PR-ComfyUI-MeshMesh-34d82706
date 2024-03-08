@@ -56,13 +56,35 @@ class MasksToColoredMasks:
         image = torch.from_numpy(image)[None,]
 
         return (image,)
+    
+
+class ColorPicker:
+    @classmethod
+    def INPUT_TYPES(s):
+        return {
+            "required": {
+                "background": ("COLOR", {"default": "#ff0000"}),
+            }
+        }
+
+    CATEGORY = "mask"
+
+    RETURN_TYPES = ("COLOR",)
+    FUNCTION = "run"
+
+    def run(self, background):
+        return (background,)
+    
+    
 
 
 NODE_CLASS_MAPPINGS = {
-    "MasksToColoredMasks": MasksToColoredMasks
+    "MasksToColoredMasks": MasksToColoredMasks,
+    "ColorPicker": ColorPicker
 }
 
 # A dictionary that contains the friendly/humanly readable titles for the nodes
 NODE_DISPLAY_NAME_MAPPINGS = {
-    "MasksToColoredMasks": "Masks to Colored Masks"
+    "MasksToColoredMasks": "Masks to Colored Masks",
+    "ColorPicker": "Color Picker"
 }
