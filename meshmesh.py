@@ -95,10 +95,12 @@ class ColorPicker:
 
 
 NODE_CLASS_MAPPINGS = {
-    "MasksToColoredMasks": MasksToColoredMasks
+    "MasksToColoredMasks": MasksToColoredMasks,
+    "ColorPicker": ColorPicker
 }
 
 # A dictionary that contains the friendly/humanly readable titles for the nodes
 NODE_DISPLAY_NAME_MAPPINGS = {
-    "MasksToColoredMasks": "Masks to Colored Masks"
+    "MasksToColoredMasks": "Masks to Colored Masks",
+    "ColorPicker": "Color Picker"
 }
