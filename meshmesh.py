@@ -23,7 +23,7 @@ class MasksToColoredMasks:
         return {
             "required": {
                 "mask": ("MASK",),
-                 "colorlist": ("STRING",{"default": "","multiline": False, "dynamicPrompts": False}), 
+                "colorlist": ("STRING",{"default": "","multiline": False, "dynamicPrompts": False}), 
                 "background": ("COLOR", {"default": "#00ff00"}),
             }
         }
@@ -34,7 +34,7 @@ class MasksToColoredMasks:
     FUNCTION = "mask_to_image"
 
     def mask_to_image(self, mask, colorlist, background):
-        colors = colorlist["string"].split(",")
+        colors = colorlist.split(",")
         result = mask.reshape(
             # (Masks, Add Channels Dim, Height, Width)
             (-1, 1, mask.shape[-2], mask.shape[-1])
