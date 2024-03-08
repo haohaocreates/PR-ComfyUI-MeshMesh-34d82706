@@ -63,7 +63,7 @@ class ColorPicker:
     def INPUT_TYPES(s):
         return {
             "required": {
-                "background": ("COLOR", {"default": "#ff0000"}),
+                "background": ("COLOR", {"default": "#ffffff"}),
             }
         }
 
