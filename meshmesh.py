@@ -23,7 +23,7 @@ class MasksToColoredMasks:
         return {
             "required": {
                 "mask": ("MASK",),
-                "colorlist": ("STRING",),
+                 "colorlist": ("STRING",{"default": "","multiline": False, "dynamicPrompts": False}), 
                 "background": ("COLOR", {"default": "#00ff00"}),
             }
         }
