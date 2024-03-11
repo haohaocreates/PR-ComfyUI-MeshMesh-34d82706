@@ -9,6 +9,7 @@ def replace_color(img, color_hex):
         color = tuple(int(color_hex.lstrip('#')[i:i+2], 16) for i in (0, 2, 4))
     else:
         color = (255, 255, 255)
+
     red, green, blue, alpha = img.T
 
     # Replace non-black with color and set black to alpha
@@ -50,7 +51,7 @@ class MasksToColoredMasks:
 
         for i, _mask in enumerate(result):
             _mask = (_mask.numpy() * 255).astype(np.uint8)
-            mask_color = colors[i] if i < len(colors) else (255, 255, 255)
+            mask_color = colors[i] if i < len(colors) else "#ffffff"
             colored_mask = replace_color(_mask, mask_color)
             composite_image.alpha_composite(colored_mask)
 
