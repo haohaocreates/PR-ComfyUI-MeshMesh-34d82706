@@ -4,8 +4,11 @@ import torch
 
 
 def replace_color(img, color_hex):
-
-    color = tuple(int(color_hex.lstrip('#')[i:i+2], 16) for i in (0, 2, 4))
+    print('color_hex', color_hex)
+    if color_hex:
+        color = tuple(int(color_hex.lstrip('#')[i:i+2], 16) for i in (0, 2, 4))
+    else:
+        color = (255, 255, 255)
     red, green, blue, alpha = img.T
 
     # Replace non-black with color and set black to alpha
