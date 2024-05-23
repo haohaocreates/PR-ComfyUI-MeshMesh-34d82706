@@ -1,0 +1,14 @@
+[project]
+name = "comfyui-meshmesh"
+description = "Nodes:Masks to Colored Masks, Color Picker"
+version = "1.0.0"
+license = "LICENSE"
+
+[project.urls]
+Repository = "https://github.com/meshmesh-io/ComfyUI-MeshMesh"
+#  Used by Comfy Registry https://comfyregistry.org
+
+[tool.comfy]
+PublisherId = ""
+DisplayName = "ComfyUI-MeshMesh"
+Icon = ""
